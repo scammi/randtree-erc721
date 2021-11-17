@@ -31,6 +31,8 @@ async function main() {
     let tokens = await contract.tokensOfOwner(owner.address)
     console.log("Owner has tokens: ", tokens);
 
+    let token_uri = await contract.tokenURI(1);
+    console.log(token_uri);
 }
 
 main()
