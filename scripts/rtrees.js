@@ -20,8 +20,7 @@ async function main() {
     console.log("Contract deployed to:", contract.address);
 
     // Reserve NFTs
-//     let txn = await contract.reserveNFTs();
-//     await txn.wait();
+    let txn = await contract.initNFTs()//     await txn.wait();
 //     console.log("10 NFTs have been reserved");
 
 //     // Mint 3 NFTs by sending 0.03 ether
@@ -29,8 +28,8 @@ async function main() {
 //     await txn.wait()
 
 //     // Get all token IDs of the owner
-//     let tokens = await contract.tokensOfOwner(owner.address)
-//     console.log("Owner has tokens: ", tokens);
+    let tokens = await contract.tokensOfOwner(owner.address)
+    console.log("Owner has tokens: ", tokens);
 
 }
 
