@@ -7,7 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract Rtrees is ERC721Enumerable ,Ownable {
     
     constructor() ERC721("NFT Collectible", "NFTC") {
+        initNFTs();
     }
+    
     function _baseURI() internal pure override returns (string memory) {
         return "https://ipfs.io/ipfs/QmQxDjEhnYP6QAtLRyLV9N7dn1kDigz7iWnx5psmyXqy35/";
     }

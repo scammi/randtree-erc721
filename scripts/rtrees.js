@@ -20,7 +20,7 @@ async function main() {
     console.log("Contract deployed to:", contract.address);
 
     // Reserve NFTs
-    let txn = await contract.initNFTs()//     await txn.wait();
+    // let txn = await contract.initNFTs()//     await txn.wait();
 //     console.log("10 NFTs have been reserved");
 
 //     // Mint 3 NFTs by sending 0.03 ether
