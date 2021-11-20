@@ -9,16 +9,17 @@ contract Rtrees is ERC721Enumerable ,Ownable {
     using Counters for Counters.Counter;
     
     Counters.Counter private _tokenIdCounter;
-    uint selfMintLimit;
-    uint maxMintLimit;
+    address raffle;
+    uint256 selfMintAmount;
+    uint256 mintLimit;
 
     constructor(
-        uint selfMint,
-        uint maxMint
+        uint256 selfMint,
+        uint256 maxMint
     ) 
     ERC721("Random tree", "RTREE") {
-        selfMintLimit = selfMint; 
-        maxMintLimit = maxMint;
+        selfMintAmount = selfMint; 
+        mintLimit = maxMint;
         initNFTs();
     }
     
@@ -27,7 +28,7 @@ contract Rtrees is ERC721Enumerable ,Ownable {
     }
 
     function initNFTs() public onlyOwner {
-        for (uint i = 0; i < selfMintLimit; i++) {
+        for (uint256 i = 0; i < selfMintAmount; i++) {
             safeMint(msg.sender);
         }
     }
@@ -47,5 +48,10 @@ contract Rtrees is ERC721Enumerable ,Ownable {
             tokensId[i] = tokenOfOwnerByIndex(_owner, i);
         }
         return tokensId;
+    }
+
+    modifier onlyRaffle() {
+        require(msg.sender == raffle, "Only raffle");
+        _;
     }
 }
