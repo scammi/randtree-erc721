@@ -9,8 +9,16 @@ contract Rtrees is ERC721Enumerable ,Ownable {
     using Counters for Counters.Counter;
     
     Counters.Counter private _tokenIdCounter;
+    uint selfMintLimit;
+    uint maxMintLimit;
 
-    constructor() ERC721("NFT Collectible", "NFTC") {
+    constructor(
+        uint selfMint,
+        uint maxMint
+    ) 
+    ERC721("Random tree", "RTREE") {
+        selfMintLimit = selfMint; 
+        maxMintLimit = maxMint;
         initNFTs();
     }
     
@@ -19,8 +27,7 @@ contract Rtrees is ERC721Enumerable ,Ownable {
     }
 
     function initNFTs() public onlyOwner {
-        // todo: create self mint variable set on custructor.
-        for (uint i = 0; i < 1; i++) {
+        for (uint i = 0; i < selfMintLimit; i++) {
             safeMint(msg.sender);
         }
     }

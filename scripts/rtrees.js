@@ -14,7 +14,10 @@ async function main() {
     const contractFactory = await hre.ethers.getContractFactory("Rtrees");
 
     // Deploy contract with the correct constructor arguments
-    const contract = await contractFactory.deploy();
+    const selfMintLimit = 1;
+    const maxMintLimit = 5;
+
+    const contract = await contractFactory.deploy(selfMintLimit, maxMintLimit);
 
     // Wait for this transaction to be mined
     await contract.deployed();
