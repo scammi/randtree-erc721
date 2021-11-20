@@ -29,11 +29,11 @@ contract Rtrees is ERC721Enumerable ,Ownable {
 
     function initNFTs() public onlyOwner {
         for (uint256 i = 0; i < selfMintAmount; i++) {
-            safeMint(msg.sender);
+            mintTree(msg.sender);
         }
     }
 
-    function safeMint(address to) public {
+    function mintTree(address to) public { // onlyRaffle
          uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);

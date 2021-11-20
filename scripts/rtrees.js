@@ -28,13 +28,15 @@ async function main() {
     console.log("Owner has tokens: ", tokens);
 
     let selfInitToken = await contract.tokenURI(0);
-    console.log(selfInitToken);
+    console.log('Token URI', selfInitToken);
 
     await contract.safeMint(user.address);
+
     let mintedToken = await contract.tokensOfOwner(user.address) ;
-    console.log(mintedToken);
+    console.log('User minted',mintedToken);
+
     let userCreatedToken = await contract.tokenURI(1);
-    console.log(userCreatedToken);
+    console.log('Token URI', userCreatedToken);
 }
 
 main()
