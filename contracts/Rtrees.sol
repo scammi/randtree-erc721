@@ -15,11 +15,13 @@ contract Rtrees is ERC721Enumerable ,Ownable {
 
     constructor(
         uint256 selfMint,
-        uint256 maxMint
+        uint256 maxMint,
+        // address raffleContract
     ) 
     ERC721("Random tree", "RTREE") {
         selfMintAmount = selfMint; 
         mintLimit = maxMint;
+        // raffle = raffleContract
         initNFTs();
     }
     
